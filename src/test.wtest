@@ -1,7 +1,8 @@
 import trenes.*
+import vagones.*
 
 describe "trenes" {
-	var vagonDePasajeros1 = new VagonDePasajeros(largoDeVagon =2, anchoDeVagon =2)
+    var vagonDePasajeros1 = new VagonDePasajeros(largoDeVagon =2, anchoDeVagon =2)
 	var vagonDePasajeros2 = new VagonDePasajeros(largoDeVagon =7, anchoDeVagon =5)
 	
 	var vagonDeCarga1 = new VagonDeCarga(cargaMaxima = 1500)
@@ -10,11 +11,19 @@ describe "trenes" {
 	var locomotora1 = new Locomotora(pesoMaximo = 1000, pesoMaximoQuePuedeArrastrar = 3000, velocidadMaxima = 2000)
 	var locomotora2 = new Locomotora(pesoMaximo = 1300, pesoMaximoQuePuedeArrastrar = 5000, velocidadMaxima = 1000)
 	
-	var formacion = new Formacion(vagones = [vagonDePasajeros1,vagonDePasajeros2,vagonDeCarga1,vagonDeCarga2,
-		                                    locomotora1,locomotora2])
+	var formacion = new Formacion(vagones = [vagonDePasajeros1,vagonDePasajeros2,vagonDeCarga1,vagonDeCarga2],
+		                          locomotoras = [locomotora1,locomotora2])
 		                                    
    test "testX" {
-   	 assert.equals(5,formacion.vagonLiviano())
+   	 assert.equals(3,formacion.vagonesLivianos())
    }
-	
+   
+   test "es eficiente "{
+     assert.equals(false, formacion.esEficiente())
+}
+
+   test "puede moverse"{
+      assert.equals(false, formacion.puedeMoverse())	
+}
+
 }
