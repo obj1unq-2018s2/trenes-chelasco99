@@ -3,7 +3,7 @@ import trenes.*
 class Vagon {
 	method esLiviano() = self.pesoMaximo() < 2500
 	
-	method pesoMaximo() //sino no entiende el mensaje el metodo esLiviano
+	method pesoMaximo()
 }
 
 
