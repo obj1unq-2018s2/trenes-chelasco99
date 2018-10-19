@@ -14,7 +14,8 @@ class VagonDePasajeros inherits Vagon {
     method cantPasajeros() = if ( anchoDeVagon <= 2.5 ) largoDeVagon * 8 
                              else largoDeVagon * 10
    
-   override method pesoMaximo() = self.cantPasajeros() * 80               
+   override method pesoMaximo() = self.cantPasajeros() * 80 
+                 
 }
 
 class VagonDeCarga inherits Vagon {
@@ -23,6 +24,7 @@ class VagonDeCarga inherits Vagon {
 	override method pesoMaximo() = cargaMaxima + 160
 	
 	method cantPasajeros() = 0
+	 
 }
 	
 	
@@ -34,3 +36,29 @@ class Locomotora {
 	method arrastreUtil() = pesoMaximoQuePuedeArrastrar - pesoMaximo
 		
 }
+
+
+class FormacionesDeCortaDistancia inherits Formacion {
+	override method estaBienArmada() {
+		return super() and not self.esCompleja()
+	}
+	override method velocidadMaxima() = 60
+		
+
+}
+
+class FormacionesDeLargaDistancia inherits Formacion {
+	var uneDosCiudades
+	override method estaBienArmada() {
+		return super() and self.hayUnBanioCada50Pasajeros()
+	}
+	
+	override method velocidadMaxima() = if ( uneDosCiudades ) 200 else 150
+}
+
+class FormacionesDeAltaVelocidad inherits FormacionesDeLargaDistancia {
+	override method estaBienArmada() {
+		return self.velocidadMaxima() >= 250 and self.sonTodosVagonesLivianos()
+	}
+}
+

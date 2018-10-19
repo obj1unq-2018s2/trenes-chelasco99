@@ -64,4 +64,21 @@ class Formacion {
     method agregarLocomotora(listaLocomotoras) {
     	return locomotoras.add(self.buscarLocomotora(listaLocomotoras))
     }
+    
+    method estaBienArmada() {
+    	return self.puedeMoverse()
+    }
+    
+    method hayUnBanioCada50Pasajeros() {  	
+    	return self.totalDePasajeros() / 50 >= 1
+   
+    }
+    
+    method totalDePasajeros() {
+    	return vagones.sum { vagon => vagon.cantPasajeros() }
+    }
+       
+    method sonTodosVagonesLivianos() {
+    	return vagones.all { vagon => vagon.esLiviano() }
+    }
 }

@@ -3,6 +3,7 @@ import vagones.*
 import deposito.*
 
 describe "trenes" {
+	
     var vagonDePasajeros1 = new VagonDePasajeros(largoDeVagon =2, anchoDeVagon =2)
 	var vagonDePasajeros2 = new VagonDePasajeros(largoDeVagon =7, anchoDeVagon =5)
 	var vagonDePasajeros3 = new VagonDePasajeros(largoDeVagon =3, anchoDeVagon =3)
@@ -57,6 +58,10 @@ describe "trenes" {
     
     test "kilosDeEmpujeQueFaltan" {
     	assert.equals(0, formacion2.kilosDeEmpujeQueFaltan())
+    }
+    
+    test "hayUnBañoCada50Pasajeros" {
+    	assert.notThat(formacion1.hayUnBanioCada50Pasajeros())
     }
     
 }

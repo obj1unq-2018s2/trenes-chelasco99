@@ -2,8 +2,8 @@ import trenes.*
 import vagones.*
 	
 class Deposito {
-	var property locomotorasSueltas = []
-	var property formacionesArmadas = []
+	var property locomotorasSueltas
+	var property formacionesArmadas
        
 	method agregarLocomotoraAFormacion(formacion) {
 	  return if ( not formacion.puedeMoverse() ) formacion.agregarLocomotora(locomotorasSueltas) else {}
